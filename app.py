@@ -26,10 +26,10 @@ if st.button("Predict Flood Level"):
 
     # Interpreting the result
     if prediction < 1.0:
-        label = "🟢 Low"
+        label = " Low"
     elif prediction < 1.8:
-        label = "🟡 Medium"
+        label = " Medium"
     else:
-        label = "🔴 High"
+        label = " High"
 
     st.markdown(f"### Predicted Flood Level: **{label}**  \nScore: `{prediction:.2f}`")
