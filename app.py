@@ -22,7 +22,7 @@ if st.button("Predict Flood Level"):
     X_input = np.array([[ndwi1, ndwi2, ndwi3]])
     X_input_norm = (X_input - mean) / std
     X_input_final = np.hstack([np.ones((1, 1)), X_input_norm])
-    prediction = theta.dot(X_input_final.T).item()
+    prediction = float(X_input_final @ theta)
 
     # Interpreting the result
     if prediction < 1.0:
