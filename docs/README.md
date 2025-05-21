@@ -2,6 +2,9 @@
 
 This project predicts downstream flood risk based on upstream environmental indicators like precipitation, temperature, and runoff using a simplified NDWI proxy and a manually implemented linear regression model.
 
+## WebApp Link
+https://floodforecastmodel.streamlit.app
+
 ## Project Structure
 
 - `data/raw/`: Raw ERA5 and GloFAS `.nc` files
