@@ -1,0 +1,44 @@
+Flood Forecast Final Report – April 2024
+-----------------------------------------
+
+Student: Aneeka Khan
+Project: NDWI-Based Flood Forecast System
+
+Overview:
+---------
+This project aims to build a data-driven flood forecasting pipeline using satellite and reanalysis data (ERA5 + GloFAS). The goal is to model the relationship between upstream activity (precipitation + temperature) and downstream discharge with a lag, simulating an NDWI-style proxy for early warning.
+
+Data Collected:
+---------------
+- ERA5: Temperature, Precipitation, Runoff (April 1–21, 2024)
+- GloFAS: Downstream river discharge (April 2–22, 2024)
+
+Preprocessing:
+--------------
+- Extracted daily averages of upstream temperature and precipitation
+- Converted discharge volumes to CSV using `xarray`
+- Normalized both features and computed NDWI proxy:
+    NDWI = (precip_norm - discharge_norm) / (precip_norm + discharge_norm)
+
+Modeling:
+---------
+- Labeled downstream flood risk levels (low=0, medium=1, high=2)
+- Aligned upstream NDWI from 3 prior weeks with target downstream flood level
+- Trained a manual OLS linear regression model:
+    θ = (XᵀX)⁻¹Xᵀy
+- MSE on test set: 2.30
+
+Limitations:
+------------
+- Small sample size (only 6 usable rows after NDWI windowing)
+- Simplified NDWI proxy (no vegetation index)
+
+Next Steps:
+-----------
+- Add real-time NDWI-based web input
+- Improve flood labeling (calibrate thresholds)
+- Visualize time series trends of NDWI and flood level
+
+Conclusion:
+-----------
+This project demonstrates a complete mini-pipeline from remote sensing data to early flood prediction using basic regression techniques.
